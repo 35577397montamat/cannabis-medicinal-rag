@@ -166,9 +166,6 @@ Implementé una interfaz local con un campo para escribir preguntas, un botón p
 
 El archivo `app.py` consulta el índice existente, sin volver a fragmentar los PDF ni reconstruir embeddings. La carpeta `chroma_db/` contiene el índice persistente y `fragmentos.json` es un archivo intermedio. Para preservar el trabajo realizado, decidí **no volver a ejecutar íntegramente los notebooks 01 y 02** y si bien se observa un error (se debe a que no esta ejecutado completo nuevamente).
 
-
-**Importante:** si no publico `chroma_db/`, la persona que reciba el proyecto deberá disponer del corpus autorizado y poder reconstruir el índice antes de consultar la interfaz.
-
 ## 11. Uso de herramientas de inteligencia artificial
 
 Utilicé **ChatGPT (OpenAI)** como apoyo durante la planificación, elaboración de código, la comprensión de bibliotecas de Python, la depuración, la interpretación de métricas, las pruebas y la redacción de la documentación. Utilicé **Granite4 mediante Ollama** para generar las respuestas y **BGE-M3 mediante Ollama** para producir embeddings.
