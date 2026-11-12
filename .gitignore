@@ -1,0 +1,27 @@
+# Entorno virtual de Python
+.venv/
+venv/
+
+# Claves y variables privadas
+.env
+.env.*
+!.env.example
+
+# Base vectorial local
+chroma_db/
+chroma/
+*.sqlite3
+
+# Archivos generados
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+fragmentos.json
+
+# Archivos temporales
+*.log
+.DS_Store
+Thumbs.db
+
+# Configuración local
+.vscode/

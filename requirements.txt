@@ -1,0 +1,27 @@
+# Librerias RAG.
+
+  
+ 
+
+
+
+chromadb>=1.5                    # base vectorial persistente
+sentence-transformers>=6.2       # modelos de embeddings
+langchain-core>=1.7              # Document, plantillas y cadenas
+langchain-text-splitters>=1.0    # cortar documentos en fragmentos
+langchain-chroma>=1.1            # envoltorio de Chroma para LangChain
+langchain-huggingface>=1.0       # embeddings de sentence-transformers
+langchain-ollama>=1.1            # generador local (Ollama)
+langchain-google-genai>=4.0      # Gemini (plan gratuito, opcional)
+pypdf>=6.0                       # leer PDF
+numpy>=2.0                       # ranking y medidas
+pandas>=3.0                      # tablas de resultados
+matplotlib>=3.9                  # graficos compartidos del curso
+python-dotenv>=1.0               # leer claves desde .env
+requests>=2.32                   # comprobar el servidor local
+ipykernel>=6.29                  # correr los cuadernos dentro de VS Code
+ipywidgets>=8.1                  # evita avisos de barras de progreso
+nbformat>=5.10                   # leer los cuadernos
+nbconvert>=7.16                  # ejecutar los cuadernos de arriba a abajo
+gradio>=6.31.0
+
