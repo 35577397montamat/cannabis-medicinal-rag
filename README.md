@@ -134,7 +134,7 @@ Consideré **11 de 15 casos (73,3 %) adecuados** bajo esa clasificación manual.
 
 Mejoré el prompt para exigir respuestas basadas en el contexto, citas de documento y página, abstención ante falta real de evidencia, tratamiento prudente de artículos legales y prohibición de inventar modalidades, categorías o requisitos. También incorporé la posibilidad de **responder parcialmente** cuando solo una parte de la pregunta está respaldada, y de utilizar enumeraciones explícitas cuando los documentos permiten contestar.
 
-Probé comparativamente valores de **`k=4`, `k=6` y `k=8`** sobre cuatro consultas problemáticas. No observé una mejora confiable y uniforme al aumentar `k`; en algunos casos aparecieron nuevos errores. Por ese motivo **mantuve `k=4`** para la versión presentada.
+Probé comparativamente valores de **`k=4`, `k=6` y `k=8`** sobre cuatro consultas problemáticas. No observé una mejora confiable y uniforme al aumentar `k`; en algunos casos aparecieron nuevos errores. Por ese motivo **mantuve `k=4`** para la versión presentada. Al correr el notebook 03 creará un CSV de comparativa de respuestas con distintos números de K.
 
 Posteriormente trasladé a Gradio las **reglas del prompt mejorado del notebook 03**, con el objetivo de mantener criterios consistentes entre la evaluación y la interfaz. No realicé una nueva evaluación cuantitativa completa después de esa actualización.
 
@@ -164,30 +164,16 @@ Implementé una interfaz local con un campo para escribir preguntas, un botón p
 
 ## 10. Conservación del índice y precauciones al reejecutar
 
-El archivo `app.py` consulta el índice existente, sin volver a fragmentar los PDF ni reconstruir embeddings. La carpeta `chroma_db/` contiene el índice persistente y `fragmentos.json` es un archivo intermedio. Para preservar el trabajo realizado, decidí **no volver a ejecutar íntegramente los notebooks 01 y 02** mientras no cuente con un respaldo y una revisión de las celdas que escriben archivos.
+El archivo `app.py` consulta el índice existente, sin volver a fragmentar los PDF ni reconstruir embeddings. La carpeta `chroma_db/` contiene el índice persistente y `fragmentos.json` es un archivo intermedio. Para preservar el trabajo realizado, decidí **no volver a ejecutar íntegramente los notebooks 01 y 02** y si bien se observa un error (se debe a que no esta ejecutado completo nuevamente).
 
-Si necesito reconstruir el índice en el futuro, primero debo respaldar el proyecto, comprobar las rutas de salida y evitar insertar fragmentos repetidos en la misma colección. La reconstrucción debe hacerse deliberadamente y en un entorno controlado, preferentemente con otra carpeta de persistencia o colección.
-
-Para un repositorio público, propongo revisar qué archivos corresponde publicar y excluir los elementos locales o regenerables mediante un `.gitignore` como este:
-
-```gitignore
-.venv/
-.env
-.env.*
-chroma_db/
-fragmentos.json
-__pycache__/
-.ipynb_checkpoints/
-*.pyc
-```
 
 **Importante:** si no publico `chroma_db/`, la persona que reciba el proyecto deberá disponer del corpus autorizado y poder reconstruir el índice antes de consultar la interfaz.
 
 ## 11. Uso de herramientas de inteligencia artificial
 
-Utilicé **ChatGPT (OpenAI)** como apoyo durante la planificación, la comprensión de bibliotecas de Python, la depuración, el diseño de prompts, la interpretación de métricas, las pruebas y la redacción de la documentación. Utilicé **Granite4 mediante Ollama** para generar las respuestas y **BGE-M3 mediante Ollama** para producir embeddings.
+Utilicé **ChatGPT (OpenAI)** como apoyo durante la planificación, elaboración de código, la comprensión de bibliotecas de Python, la depuración, la interpretación de métricas, las pruebas y la redacción de la documentación. Utilicé **Granite4 mediante Ollama** para generar las respuestas y **BGE-M3 mediante Ollama** para producir embeddings.
 
-Ejecuté y revisé las etapas del proyecto en mi equipo. Documenté tanto los resultados favorables como las abstenciones, errores de atribución normativa y limitaciones detectadas. La revisión jurídica exhaustiva de todas las respuestas y la verificación definitiva de procedencia y licencias del corpus permanecen pendientes.
+Ejecuté y revisé las etapas del proyecto en mi equipo. Documenté tanto los resultados favorables como las abstenciones, errores de atribución normativa y limitaciones detectadas. La auditoria exhaustiva de todas las respuestas y la verificación definitiva de procedencia y licencias del corpus permanecen pendientes.
 
 
 **Conclusión:** logré implementar un prototipo RAG funcional, con corpus institucional, recuperación vectorial, generación local, evaluación de recuperación y una interfaz de consulta que también ejecuté de forma independiente mediante `app.py`. La auditoría mostró que la recuperación de documentos puede ser satisfactoria sin que eso garantice respuestas jurídicas correctas. Por eso, presento el sistema como **herramienta informativa experimental**, con límites explícitos y necesidad de verificación humana de las fuentes.
